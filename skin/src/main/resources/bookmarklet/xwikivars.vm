@@ -133,6 +133,7 @@
 #end
 #set ($keyboardShortcutsEnabled = $isAdvancedUser)
 #set ($isInPortletMode = $xwikimode == 1 || "$!request.getAttribute('javax.portlet.request')" != '')
+#set ($isInEmbedMode = "$!request.xpage" == "embed")
 #set ($isInServletMode = $xwikimode == 0 && !$isInPortletMode)
 #template("deprecatedVars.vm")
 #end

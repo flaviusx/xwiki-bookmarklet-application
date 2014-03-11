@@ -3,4 +3,6 @@
 ###
 ### Contains the global and space zones
 ###
+#if($isInServletMode && !$isInEmbedMode)## Visible only in a page
 #template("global.vm")
+#end

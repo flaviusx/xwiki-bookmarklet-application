@@ -1,0 +1,13 @@
+########################################################
+## Default behavior of xpage=embed
+########################################################
+#set ($qs = "xpage=embed")
+#if ("$!request.xsource" != "")
+  #set ($qs = "${qs}&xsource=$escapetool.url($request.xsource)")
+#end
+#set ($discard = $context.setLinksQueryString($qs))
+#if ($context.action != "create")
+  #template("${context.action}.vm")
+#else
+  #template("view.vm")
+#end

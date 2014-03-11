@@ -6,6 +6,10 @@
 #end
 #set ($defaultStyleURL = $xwiki.getSkinFile($defaultstyle, true))
 <link href="${defaultStyleURL}#if ($themeDoc)?colorTheme=$!{themeDocFullName}#end" rel="stylesheet" type="text/css" media="all" />
+#if($isInEmbedMode)
+#set ($embedStyleURL = $xwiki.getSkinFile("embed.css", true))
+<link href="${embedStyleURL}#if($themeDoc)?colorTheme=$!{themeDocFullName}#end" rel="stylesheet" type="text/css" media="all" />
+#end
 <link href="$xwiki.getSkinFile('print.css', true)#if ($themeDoc)?colorTheme=$!{themeDocFullName}#end" rel="stylesheet" type="text/css" media="#if ($printss)all#{else}print#{end}" />
 #set ($a11y = "$!{request.getCookie('a11y').getValue()}")
 #if ($a11y == '')

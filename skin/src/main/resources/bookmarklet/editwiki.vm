@@ -2,6 +2,9 @@
 #set($saveaction = "save")
 #set($previewenabled = true)
 #set($xredirect = "$!{escapetool.xml($request.getParameter('xredirect'))}")
+#if("$!xredirect" == "" && $isInEmbedMode)
+  #set($xredirect = $doc.getURL("view"))
+#end
 <div>
 <div class="hidden">
 <input type="hidden" name="template" value="$!{escapetool.xml($request.template)}" />

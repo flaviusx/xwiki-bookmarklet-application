@@ -9,9 +9,11 @@ $xwiki.ssfx.use('uicomponents/widgets/fullScreen.css', true)##
 #set($allowDocEdit = !(($doc.getLocked()==true)&&(!$force)) )
 ##
 <div class="main layoutsubsection">
+  #if($displayContentMenu)
   <div id="contentmenu" class="actionmenu">
     #template("editmenu.vm")
   </div>
+  #end
 <div id="mainContentArea">
 ## ----------------------------------------------------------------------------
 ## Start FORM at start of content area IF editing is allowed.
@@ -19,8 +21,10 @@ $xwiki.ssfx.use('uicomponents/widgets/fullScreen.css', true)##
 #if ($allowDocEdit)
  <form id="inline" method="post" action="$doc.getURL("preview")" class="withLock">
 #end
+#if($displayHierarchy)
 #template("hierarchy.vm")
 #template('editmeta.vm')
+#end
 ## ----------------------------------------------------------------------------
 ## Compute title to display and modify rendered content accordingly.
 ## ----------------------------------------------------------------------------

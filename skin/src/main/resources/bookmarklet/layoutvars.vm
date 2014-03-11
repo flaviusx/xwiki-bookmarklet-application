@@ -87,9 +87,23 @@
 #set($displayMainMenu = true)
 #set($displayDocExtra = true)
 #set($displayShortcuts = true)
+#set($displayHierarchy = true)
 
 #set ($displayQuickSearch = true)
 #set ($displayLanguageChoice = true)
+
+#if ($isInEmbedMode)
+  #set ($displayContentMenu = false)
+  #set ($displayMainMenu = false)
+  #set ($displayDocExtra = false)
+  #set ($displayShortcuts = false)
+  #set ($displayQuickSearch = false)
+  #set ($displayLanguageChoice = false)
+  #set($displayHierarchy = false)
+  
+  #set($showLeftPanels = "0")
+  #set($showRightPanels = "0")
+#end
 
 ## To let custom skins easily override layout variables, we evaluate a template that is empty by default.
 #template("layoutExtraVars.vm")

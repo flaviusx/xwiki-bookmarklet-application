@@ -1,0 +1,41 @@
+#body #contentcolumn .main {
+  padding: 0;
+}
+
+#mainContentArea, #mainEditArea {
+  border: none;
+}
+
+#editPanels {
+  margin-right: 2em;
+  position: absolute;
+  right: 0;
+  top: 3em;
+  width: auto;
+}
+
+#editPanels .panel {
+  float: left;
+}
+
+.editor-wiki .alleditcontent, .editor-wysiwyg .alleditcontent {
+  margin: 0;
+}
+
+#xwikimaincontainerinner {
+  height: auto;
+}
+
+#parentinput label {
+  margin-bottom: 0.5em;
+}
+
+#body #contentcolumn .main {
+  height: 99%;
+}
+/*
+#mainContentArea {
+  display: none;
+  height: 96%;
+}
+*/

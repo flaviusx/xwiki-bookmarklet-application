@@ -1,4 +1,4 @@
-#if($isInServletMode)## Visible only in a page
+#if($isInServletMode && !$isInEmbedMode)## Visible only in a page
 <div id="footerglobal" class="layoutsection">
 <div class="minwidth"></div>
 <hr/>

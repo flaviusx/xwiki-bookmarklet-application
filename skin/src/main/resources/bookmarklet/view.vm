@@ -22,7 +22,9 @@
     </div>
   #end
   <div id="mainContentArea">
+  #if($displayHierarchy)
   #template("hierarchy.vm")
+  #end
   #if($viewer == 'content')
     #template("contentview.vm")
   #else
