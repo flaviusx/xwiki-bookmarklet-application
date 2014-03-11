@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.xwiki.contrib</groupId>
+    <artifactId>bookmarklet-application-pom</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>bookmarklet-application-skin</artifactId>
+  <name>Bookmarklet Skin</name>
+  <packaging>pom</packaging>
+  <properties>
+    <!-- Don't run CLIRR here since there's no Java code. -->
+    <xwiki.clirr.skip>true</xwiki.clirr.skip>
+    <downloaded-resources-output-directory>${project.build.directory}/generated-resources/maven-download-plugin</downloaded-resources-output-directory>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-colibri</artifactId>
+      <version>${platform.version}</version>
+      <type>zip</type>
+      <scope>runtime</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.googlecode.maven-download-plugin</groupId>
+        <artifactId>maven-download-plugin</artifactId>
+        <version>1.1.0</version>
+        <executions>
+          <execution>
+            <id>get-colibri</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>wget</goal>
+            </goals>
+            <configuration>
+              <url>http://maven.xwiki.org/releases/org/xwiki/platform/xwiki-platform-colibri/${platform.version}/xwiki-platform-colibri-${platform.version}.zip</url>
+              <outputDirectory>${downloaded-resources-output-directory}</outputDirectory>
+              <unpack>true</unpack>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <appendAssemblyId>false</appendAssemblyId>
+          <descriptors>
+            <descriptor>${basedir}/src/assemble/skin.xml</descriptor>
+          </descriptors>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
